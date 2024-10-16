@@ -74,6 +74,30 @@
         <picklistField>Type</picklistField>
         <picklistObject>Case</picklistObject>
     </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>CasePotentialLiabilityPicklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>PotentialLiability__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>CaseProductPicklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Product__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>CaseSLAViolationPicklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>SLAViolation__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
     <environments>Default</environments>
     <formulas>
         <name>User_First_Name_Formula</name>
@@ -98,8 +122,8 @@
     <recordCreates>
         <name>Create_Case_Record</name>
         <label>Create Case Record</label>
-        <locationX>717</locationX>
-        <locationY>609</locationY>
+        <locationX>808</locationX>
+        <locationY>629</locationY>
         <connector>
             <targetReference>Case_Lookup</targetReference>
         </connector>
@@ -116,9 +140,33 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>EngineeringReqNumber__c</field>
+            <value>
+                <elementReference>Case_Engineering_Req_Number</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Origin</field>
             <value>
-                <elementReference>Case_Origin_Picklist</elementReference>
+                <elementReference>Case_Origin_Input</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PotentialLiability__c</field>
+            <value>
+                <elementReference>Case_Potential_Liability</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Product__c</field>
+            <value>
+                <elementReference>Case_Product</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SLAViolation__c</field>
+            <value>
+                <elementReference>Case_SLA_Violation</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -130,7 +178,7 @@
         <inputAssignments>
             <field>Type</field>
             <value>
-                <elementReference>Case_Type_Picklist</elementReference>
+                <elementReference>Case_Type_Input</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
@@ -177,8 +225,8 @@
     <recordLookups>
         <name>Case_Lookup</name>
         <label>Case Lookup</label>
-        <locationX>717</locationX>
-        <locationY>461</locationY>
+        <locationX>808</locationX>
+        <locationY>449</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Case_Created_Screen</targetReference>
@@ -267,8 +315,8 @@
     <screens>
         <name>Case_Created_Screen</name>
         <label>Case Created</label>
-        <locationX>717</locationX>
-        <locationY>280</locationY>
+        <locationX>810</locationX>
+        <locationY>275</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -303,8 +351,8 @@
     <screens>
         <name>Case_Details_Screen</name>
         <label>Get Case Details</label>
-        <locationX>573</locationX>
-        <locationY>608</locationY>
+        <locationX>567</locationX>
+        <locationY>650</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -512,6 +560,60 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <screens>
+        <name>Get_Extended_Case_Details</name>
+        <label>Get Extended Case Details</label>
+        <locationX>667</locationX>
+        <locationY>557</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Create_Case_Record</targetReference>
+        </connector>
+        <fields>
+            <name>Extended_Case_Details_Title</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 20px; color: rgb(68, 68, 68);&quot;&gt;Get Extended Case Details&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Case_Product</name>
+            <choiceReferences>CaseProductPicklist</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Case Product</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Case_Engineering_Req_Number</name>
+            <dataType>String</dataType>
+            <fieldText>Case Engineering Req Number</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Case_Potential_Liability</name>
+            <choiceReferences>CasePotentialLiabilityPicklist</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Case Potential Liability</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Case_SLA_Violation</name>
+            <choiceReferences>CaseSLAViolationPicklist</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Case SLA Violation</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <sourceTemplate>setup_service_experience__Create_Case</sourceTemplate>
     <stages>
         <name>Case_Details_Stage</name>
@@ -532,7 +634,7 @@
             <targetReference>Assign_Stage_1</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <name>Case_Created_Script_Template</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
