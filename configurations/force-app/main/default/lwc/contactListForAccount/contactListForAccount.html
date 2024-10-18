@@ -1,0 +1,72 @@
+<template>
+    <lightning-card title="Related Contacts" icon-name="standard:contact">
+        <template if:true={contacts}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="slds-truncate" title="First Name">First Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Last Name">Last Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Email">Email</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Phone">Phone</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="City">City</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Country">Country</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Postal Code">Postal Code</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="State">State</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Street">Street</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={contacts} for:item="contact">
+                        <tr key={contact.Id}>
+                            <td>
+                                <div class="slds-truncate" title={contact.FirstName}>{contact.FirstName}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={contact.LastName}>{contact.LastName}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={contact.Email}>{contact.Email}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={contact.Phone}>{contact.Phone}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={contact.MailingCity}>{contact.MailingCity}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={contact.MailingCountry}>{contact.MailingCountry}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={contact.MailingState}>{contact.MailingState}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={contact.MailingStreet}>{contact.MailingStreet}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error">Error while loading contacts: {error}</p>
+        </template>
+    </lightning-card>
+</template>
