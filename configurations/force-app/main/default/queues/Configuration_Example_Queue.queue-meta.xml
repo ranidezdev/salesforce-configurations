@@ -1,44 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
-    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <email>configuration@example.queue</email>
     <name>Configuration Example Queue</name>
     <queueMembers>
         <roleAndSubordinates>
-            <roleAndSubordinate>COO</roleAndSubordinate>
-            <roleAndSubordinate>EasternSalesTeam</roleAndSubordinate>
+            <roleAndSubordinate>ChannelSalesTeam</roleAndSubordinate>
+            <roleAndSubordinate>CustomerSupportInternational</roleAndSubordinate>
+            <roleAndSubordinate>CustomerSupportNorthAmerica</roleAndSubordinate>
+            <roleAndSubordinate>InstallationRepairServices</roleAndSubordinate>
+            <roleAndSubordinate>SVPSalesMarketing</roleAndSubordinate>
             <roleAndSubordinate>WesternSalesTeam</roleAndSubordinate>
         </roleAndSubordinates>
         <roleAndSubordinatesInternal>
-            <roleAndSubordinateInternal>CEO</roleAndSubordinateInternal>
+            <roleAndSubordinateInternal>CFO</roleAndSubordinateInternal>
             <roleAndSubordinateInternal>COO</roleAndSubordinateInternal>
-            <roleAndSubordinateInternal>DirectorDirectSales</roleAndSubordinateInternal>
+            <roleAndSubordinateInternal>CustomerSupportNorthAmerica</roleAndSubordinateInternal>
             <roleAndSubordinateInternal>EasternSalesTeam</roleAndSubordinateInternal>
+            <roleAndSubordinateInternal>MarketingTeam</roleAndSubordinateInternal>
             <roleAndSubordinateInternal>SVPHumanResources</roleAndSubordinateInternal>
         </roleAndSubordinatesInternal>
         <roles>
+            <role>COO</role>
             <role>CustomerSupportInternational</role>
-            <role>EasternSalesTeam</role>
+            <role>InstallationRepairServices</role>
+            <role>MarketingTeam</role>
+            <role>SVPHumanResources</role>
+            <role>VPInternationalSales</role>
         </roles>
         <users>
             <user>paulzimmermann123@curious-panda-84dcp9.com</user>
-            <user>insightssecurity@00dqy00000d4eikmaj.com</user>
         </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>AccountBrand</sobjectType>
     </queueSobject>
     <queueSobject>
-        <sobjectType>AuthorizationFormDataUse</sobjectType>
+        <sobjectType>AuthorizationFormConsent</sobjectType>
     </queueSobject>
     <queueSobject>
-        <sobjectType>ChannelProgram</sobjectType>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>ChangeRequest</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>CommSubscription</sobjectType>
     </queueSobject>
     <queueSobject>
         <sobjectType>CommSubscriptionConsent</sobjectType>
     </queueSobject>
     <queueSobject>
-        <sobjectType>ContactPointConsent</sobjectType>
+        <sobjectType>CreditMemo</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>DataUseLegalBasis</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>DataUsePurpose</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>FlowOrchestrationWorkItem</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Invoice</sobjectType>
     </queueSobject>
     <queueSobject>
         <sobjectType>KnowledgeArticleVersion</sobjectType>
@@ -47,15 +72,21 @@
         <sobjectType>LearningItem</sobjectType>
     </queueSobject>
     <queueSobject>
-        <sobjectType>Scorecard</sobjectType>
+        <sobjectType>ProcessException</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>ServiceContract</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Task</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>WebCartDocument</sobjectType>
     </queueSobject>
     <queueSobject>
         <sobjectType>WorkBadgeDefinition</sobjectType>
     </queueSobject>
     <queueSobject>
         <sobjectType>WorkOrder</sobjectType>
-    </queueSobject>
-    <queueSobject>
-        <sobjectType>WorkStepTemplate</sobjectType>
     </queueSobject>
 </Queue>
