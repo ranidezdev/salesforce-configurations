@@ -2,7 +2,9 @@ diff --git a/configurations/force-app/main/default/classes/ContactListController
 index 0e21f90..821bf18 100644
 --- a/configurations/force-app/main/default/classes/ContactListController.cls
 +++ b/configurations/force-app/main/default/classes/ContactListController.cls
-@@ -3,9 +3,10 @@ public with sharing class ContactListController {
+@@ -1,11 +1,12 @@
+ public with sharing class ContactListController {
+     
      @AuraEnabled(cacheable=true)
      public static List<Contact> getContactList(Id accountId) {
          return [
@@ -19,7 +21,7 @@ diff --git a/configurations/force-app/main/default/lwc/contactListForAccount/con
 index c3f876a..db1d652 100644
 --- a/configurations/force-app/main/default/lwc/contactListForAccount/contactListForAccount.html
 +++ b/configurations/force-app/main/default/lwc/contactListForAccount/contactListForAccount.html
-@@ -1,13 +1,69 @@
+@@ -1,16 +1,72 @@
  <template>
 -    <lightning-card title="Contacts" icon-name="standard:contact">
 +    <lightning-card title="Related Contacts" icon-name="standard:contact">
@@ -97,3 +99,7 @@ index c3f876a..db1d652 100644
          </template>
          <template if:true={error}>
              <p class="slds-text-color_error">Error while loading contacts: {error}</p>
+         </template>
+     </lightning-card>
+ </template>
+\ No newline at end of file
