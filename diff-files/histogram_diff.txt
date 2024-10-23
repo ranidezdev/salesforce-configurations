@@ -2,7 +2,9 @@ diff --git a/configurations/force-app/main/default/flexipages/Account_Flexipage.
 index 9274079..8a2b88d 100644
 --- a/configurations/force-app/main/default/flexipages/Account_Flexipage.flexipage-meta.xml
 +++ b/configurations/force-app/main/default/flexipages/Account_Flexipage.flexipage-meta.xml
-@@ -3,17 +3,20 @@
+@@ -1,221 +1,748 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
      <flexiPageRegions>
          <itemInstances>
              <componentInstance>
@@ -25,7 +27,13 @@ index 9274079..8a2b88d 100644
                  </componentInstanceProperties>
                  <componentInstanceProperties>
                      <name>hideChatterActions</name>
-@@ -27,7 +30,20 @@
+                     <value>false</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>numVisibleActions</name>
+                     <value>3</value>
+                 </componentInstanceProperties>
+                 <componentName>force:highlightsPanel</componentName>
                  <identifier>force_highlightsPanel</identifier>
              </componentInstance>
          </itemInstances>
@@ -47,7 +55,38 @@ index 9274079..8a2b88d 100644
          <name>header</name>
          <type>Region</type>
      </flexiPageRegions>
-@@ -66,18 +82,532 @@
+     <flexiPageRegions>
+         <itemInstances>
+             <componentInstance>
+                 <componentName>cooper:companyInsightTeaserCard</componentName>
+                 <identifier>cooper_companyInsightTeaserCard</identifier>
+             </componentInstance>
+         </itemInstances>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>displayOption</name>
+                     <value>BOTH</value>
+                 </componentInstanceProperties>
+                 <componentName>runtime_sales_merge:mergeCandidatesPreviewCard</componentName>
+                 <identifier>runtime_sales_merge_mergeCandidatesPreviewCard</identifier>
+             </componentInstance>
+         </itemInstances>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>relatedListComponentOverride</name>
+                     <value>NONE</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>rowsToDisplay</name>
+                     <value>10</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>showActionBar</name>
+                     <value>true</value>
+                 </componentInstanceProperties>
+                 <componentName>force:relatedListContainer</componentName>
                  <identifier>force_relatedListContainer</identifier>
              </componentInstance>
          </itemInstances>
@@ -584,7 +623,36 @@ index 9274079..8a2b88d 100644
          <name>detailTabContent</name>
          <type>Facet</type>
      </flexiPageRegions>
-@@ -114,7 +644,6 @@
+     <flexiPageRegions>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>active</name>
+                     <value>true</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>body</name>
+                     <value>relatedTabContent</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>title</name>
+                     <value>Standard.Tab.relatedLists</value>
+                 </componentInstanceProperties>
+                 <componentName>flexipage:tab</componentName>
+                 <identifier>relatedListsTab</identifier>
+             </componentInstance>
+         </itemInstances>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>body</name>
+                     <value>detailTabContent</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>title</name>
+                     <value>Standard.Tab.detail</value>
+                 </componentInstanceProperties>
+                 <componentName>flexipage:tab</componentName>
                  <identifier>detailTab</identifier>
              </componentInstance>
          </itemInstances>
@@ -592,7 +660,14 @@ index 9274079..8a2b88d 100644
          <name>maintabs</name>
          <type>Facet</type>
      </flexiPageRegions>
-@@ -129,7 +658,6 @@
+     <flexiPageRegions>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>tabs</name>
+                     <value>maintabs</value>
+                 </componentInstanceProperties>
+                 <componentName>flexipage:tabset</componentName>
                  <identifier>flexipage_tabset</identifier>
              </componentInstance>
          </itemInstances>
@@ -600,7 +675,14 @@ index 9274079..8a2b88d 100644
          <name>main</name>
          <type>Region</type>
      </flexiPageRegions>
-@@ -144,7 +672,6 @@
+     <flexiPageRegions>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>showLegacyActivityComposer</name>
+                     <value>false</value>
+                 </componentInstanceProperties>
+                 <componentName>runtime_sales_activities:activityPanel</componentName>
                  <identifier>runtime_sales_activities_activityPanel</identifier>
              </componentInstance>
          </itemInstances>
@@ -608,7 +690,10 @@ index 9274079..8a2b88d 100644
          <name>activityTabContent</name>
          <type>Facet</type>
      </flexiPageRegions>
-@@ -155,7 +682,6 @@
+     <flexiPageRegions>
+         <itemInstances>
+             <componentInstance>
+                 <componentName>forceChatter:recordFeedContainer</componentName>
                  <identifier>forceChatter_recordFeedContainer</identifier>
              </componentInstance>
          </itemInstances>
@@ -616,7 +701,36 @@ index 9274079..8a2b88d 100644
          <name>feedTabContent</name>
          <type>Facet</type>
      </flexiPageRegions>
-@@ -192,7 +718,6 @@
+     <flexiPageRegions>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>active</name>
+                     <value>true</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>body</name>
+                     <value>activityTabContent</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>title</name>
+                     <value>Standard.Tab.activity</value>
+                 </componentInstanceProperties>
+                 <componentName>flexipage:tab</componentName>
+                 <identifier>activityTab</identifier>
+             </componentInstance>
+         </itemInstances>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>body</name>
+                     <value>feedTabContent</value>
+                 </componentInstanceProperties>
+                 <componentInstanceProperties>
+                     <name>title</name>
+                     <value>Standard.Tab.collaborate</value>
+                 </componentInstanceProperties>
+                 <componentName>flexipage:tab</componentName>
                  <identifier>collaborateTab</identifier>
              </componentInstance>
          </itemInstances>
@@ -624,7 +738,14 @@ index 9274079..8a2b88d 100644
          <name>sidebartabs</name>
          <type>Facet</type>
      </flexiPageRegions>
-@@ -207,15 +732,17 @@
+     <flexiPageRegions>
+         <itemInstances>
+             <componentInstance>
+                 <componentInstanceProperties>
+                     <name>tabs</name>
+                     <value>sidebartabs</value>
+                 </componentInstanceProperties>
+                 <componentName>flexipage:tabset</componentName>
                  <identifier>flexipage_tabset2</identifier>
              </componentInstance>
          </itemInstances>
