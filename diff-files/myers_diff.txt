@@ -2,7 +2,7 @@ diff --git a/configurations/force-app/main/default/queues/Configuration_Example_
 index 70b2b71..5fe8850 100644
 --- a/configurations/force-app/main/default/queues/Configuration_Example_Queue.queue-meta.xml
 +++ b/configurations/force-app/main/default/queues/Configuration_Example_Queue.queue-meta.xml
-@@ -1,44 +1,69 @@
+@@ -1,61 +1,92 @@
  <?xml version="1.0" encoding="UTF-8"?>
  <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
 -    <doesSendEmailToMembers>false</doesSendEmailToMembers>
@@ -82,7 +82,8 @@ index 70b2b71..5fe8850 100644
      </queueSobject>
      <queueSobject>
          <sobjectType>KnowledgeArticleVersion</sobjectType>
-@@ -47,15 +72,21 @@
+     </queueSobject>
+     <queueSobject>
          <sobjectType>LearningItem</sobjectType>
      </queueSobject>
      <queueSobject>
