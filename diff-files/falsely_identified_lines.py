@@ -1,5 +1,3 @@
-import re
-
 def parse_diff(diff_file):
     with open(diff_file, 'r') as f:
         lines = f.readlines()
@@ -9,18 +7,17 @@ def parse_diff(diff_file):
     inside_hunk = False
 
     for line in lines:
-        if line.startswith('@@'):
-            if inside_hunk:
-                hunks.append(hunk)
-                hunk = {'added': [], 'removed': []}
+        if line.startswith('+ ') or line.startswith('- '):
             inside_hunk = True
-        elif inside_hunk:
             if line.startswith('+'):
                 hunk['added'].append(line[1:].strip())
             elif line.startswith('-'):
                 hunk['removed'].append(line[1:].strip())
         else:
-            continue
+            if inside_hunk:
+                hunks.append(hunk)
+                hunk = {'added': [], 'removed': []}
+                inside_hunk = False
 
     if inside_hunk:
         hunks.append(hunk)
@@ -28,7 +25,7 @@ def parse_diff(diff_file):
     return hunks
 
 
-def check_for_falsely_identified_changes(hunks):
+def check_for_unnecessary_changes(hunks):
     unnecessary_changes = []
     
     for hunk in hunks:
@@ -41,7 +38,7 @@ def check_for_falsely_identified_changes(hunks):
 
 def main(diff_file):
     hunks = parse_diff(diff_file)
-    unnecessary_changes = check_for_falsely_identified_changes(hunks)
+    unnecessary_changes = check_for_unnecessary_changes(hunks)
 
     if unnecessary_changes:
         print("Found falsely identified changes in the following lines:")
@@ -53,5 +50,5 @@ def main(diff_file):
 
 
 if __name__ == "__main__":
-    diff_file = "histogram_diff.txt"  
+    diff_file = "histogram_diff.txt" 
     main(diff_file)
