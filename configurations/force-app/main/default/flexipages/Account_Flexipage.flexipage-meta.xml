@@ -108,7 +108,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(68, 68, 68);&quot;&gt;{!$Label.BlacklistedBanner} {!$Label.BlacklistedBannerLink}&lt;/span&gt;&lt;/p&gt;</value>
+                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;The associated account or contact is marked as blacklisted. Please contact: support@configuration.com&lt;/strong&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText2</identifier>
@@ -190,22 +190,6 @@
                 <componentInstanceProperties>
                     <name>filtering</name>
                     <value>ActiveInCompany__c = True</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hasCustomButton</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hasNewButton</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hasStandardNewButton</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hasViewAll</name>
-                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>useFilteredViewAll</name>
@@ -542,21 +526,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>icon</name>
-                    <value>standard:opportunity</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>parentRelationship</name>
-                    <value>Account</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>recordLimit</name>
-                    <value>30</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>recordTypeDevName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>sorting</name>
                     <value>CloseDate DESC</value>
                 </componentInstanceProperties>
@@ -757,32 +726,6 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Account.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Account_Relationship1__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>OV</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer2</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-e669a5bd-2181-4d49-9281-876475c54c4a</name>
@@ -1157,7 +1100,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>filtering</name>
-                    <value>(Status__c = &apos;Trialed&apos; AND ValidUntil__c &gt;= TODAY)</value>
+                    <value>(Status__c = &apos;Trialed&apos; AND ValidUntil__c &gt;= TODAY AND Active__c = true)</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hasCustomButton</name>
@@ -1248,7 +1191,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>filtering</name>
-                    <value>((Status__c = &apos;Trialed&apos; AND ValidUntil__c &lt; TODAY) OR Status__c = &apos;Cancelled&apos;)</value>
+                    <value>((Status__c = &apos;Trialed&apos; AND ValidUntil__c &lt; TODAY) OR (Status__c = &apos;Cancelled&apos;) OR (Status__c = &apos;Trialed&apos; AND Active__c = false))</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hasCustomButton</name>
@@ -1351,7 +1294,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>filtering</name>
-                    <value>((Status__c = &apos;New&apos; OR Status__c = &apos;InClarification&apos; OR Status__c = &apos;AccaptenceCountry&apos; OR Status__c = &apos;AccaptenceArea&apos; OR Status__c = &apos;AccaptenceRegion&apos; OR Status__c = &apos;PreCheckApproved&apos; OR Status__c = &apos;Audit&apos; OR Status__c = &apos;AuditAccaptence&apos;) OR ((Status__c = &apos;Trialed&apos; OR Status__c = &apos;FinalTrial&apos;) AND ValidFrom__c &gt; TODAY))</value>
+                    <value>((Status__c = &apos;New&apos; OR Status__c = &apos;InClarification&apos; OR Status__c = &apos;AccaptanceCountry&apos; OR Status__c = &apos;AccaptanceArea&apos; OR Status__c = &apos;AccaptanceRegion&apos; OR Status__c = &apos;PreCheckApproved&apos; OR Status__c = &apos;Audit&apos; OR Status__c = &apos;AuditAccaptance&apos; OR Status__c = &apos;FinalTrial&apos;) OR ((Status__c = &apos;Trialed&apos;) AND (ValidFrom__c &gt; TODAY OR ValidFrom__c = NULL)))</value>                
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hasCustomButton</name>
@@ -1388,6 +1331,32 @@
                     <name>newObjectButtonLabel</name>
                     <value>New Contact</value>
                 </componentInstanceProperties>
+                <itemInstances>
+                    <componentInstance>
+                        <componentInstanceProperties>
+                            <name>parentFieldApiName</name>
+                            <value>Account.Id</value>
+                        </componentInstanceProperties>
+                        <componentInstanceProperties>
+                            <name>relatedListApiName</name>
+                            <value>Account_Relationship1__r</value>
+                        </componentInstanceProperties>
+                        <componentInstanceProperties>
+                            <name>relatedListComponentOverride</name>
+                            <value>OV</value>
+                        </componentInstanceProperties>
+                        <componentInstanceProperties>
+                            <name>rowsToDisplay</name>
+                            <value>10</value>
+                        </componentInstanceProperties>
+                        <componentInstanceProperties>
+                            <name>showActionBar</name>
+                            <value>true</value>
+                        </componentInstanceProperties>
+                        <componentName>force:relatedListSingleContainer</componentName>
+                        <identifier>force_relatedListSingleContainer2</identifier>
+                    </componentInstance>
+                </itemInstances>
                 <componentInstanceProperties>
                     <name>overrideRedirectToRecordPage</name>
                     <value>false</value>
@@ -1421,7 +1390,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>In Accaptence/Upcoming Trials</value>
+                    <value>In Accaptance/Upcoming Trials</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>useFilteredViewAll</name>
