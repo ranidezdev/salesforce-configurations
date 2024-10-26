@@ -12,6 +12,7 @@
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <nameSegment>ConfigurationUtils</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
         <versionSegment>1</versionSegment>
     </actionCalls>
@@ -27,6 +28,7 @@
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <nameSegment>ConfigurationGetNetworkUrl</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
         <versionSegment>1</versionSegment>
     </actionCalls>
@@ -66,6 +68,7 @@
             </value>
         </inputParameters>
         <nameSegment>ConfigurationSendRegistrationEmail</nameSegment>
+        <offset>0</offset>
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>61.0</apiVersion>
@@ -710,54 +713,15 @@
                     <elementReference>Configuration_Send_Email.IsSuccess</elementReference>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>inProgress</name>
+                <value>
+                    <elementReference>Configuration_Send_Email.InProgress</elementReference>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
-            <name>Copy_1_of_Data_Initiative_Information</name>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Data_Processing_Heading</name>
-            <fieldText>&lt;p&gt;&lt;strong&gt;{!DataProcessingHeading}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Copy_1_of_Enter_Email_to_register_Section1</name>
-            <fieldType>RegionContainer</fieldType>
-            <fields>
-                <name>Copy_1_of_Enter_Email_to_register_Section1_Column1</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>Data_Processing_Image_2</name>
-                    <fieldType>DisplayText</fieldType>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>Copy_1_of_Enter_Email_to_register_Section1_Column2</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>Copy_1_of_Data_Processing_Information</name>
-                    <fieldType>DisplayText</fieldType>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>8</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <showFooter>false</showFooter>
         <showHeader>false</showHeader>
@@ -842,8 +806,13 @@
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Data_Process_Heading</name>
-            <fieldText>&lt;p&gt;&lt;strong&gt;{!DataProcessingHeading}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <name>QA_Heading</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;{!QAHeading}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>QA_Description</name>
+            <fieldText>&lt;p&gt;{!$Label.Enter_Email_QA_description}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -852,6 +821,27 @@
             <fields>
                 <name>Enter_Email_to_register_Section1_Column1</name>
                 <fieldType>Region</fieldType>
+                <fields>
+                    <name>QA_Right_Column</name>
+                    <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_What_are_my_benefits}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_Gain_insights}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_How_does_my_data_help}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_How_your_data_helps}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_What_is_Home_Monitoring}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_What_is_Home_Monitoring_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_What_is_the_Purpose}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_What_is_the_Purpose_description}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Enter_Email_to_register_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>QA_Left_Column</name>
+                    <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_If_I_choose_no_participation}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_If_I_choose_no_participation_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_How_will_my_data_be_protected}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_How_will_my_data_be_protected_description}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
                 <fields>
                     <name>Processing_Image</name>
                     <extensionName>c:ConfigurationDisplayImage</extensionName>
@@ -869,22 +859,67 @@
                 <inputParameters>
                     <name>width</name>
                     <value>
-                        <stringValue>4</stringValue>
+                        <stringValue>6</stringValue>
                     </value>
                 </inputParameters>
                 <isRequired>false</isRequired>
             </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>Enter_Email_to_register_Section2</name>
+            <fieldType>RegionContainer</fieldType>
             <fields>
-                <name>Enter_Email_to_register_Section1_Column2</name>
+                <name>Enter_Email_to_register_Section2_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
-                    <name>Data_Processing_Information</name>
+                    <name>QA_Left_Column_2</name>
+                    <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_Who_can_access_my_data}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_Who_can_access_my_data_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_How_long_data_stored}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_How_long_data_stored_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_Can_I_withdraw_my_consent}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_Can_I_withdraw_my_consent_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <inputParameters>
                     <name>width</name>
                     <value>
-                        <stringValue>8</stringValue>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Enter_Email_to_register_Section2_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>QA_Right_Column_2</name>
+                    <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_For_what_purposes}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_For_what_purposes_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_Can_I_ask_my_doctor}&lt;/strong&gt;{!$Label.Enter_Email_Can_I_ask_my_doctor_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!$Label.Enter_Email_Where_more_Information}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_Where_more_Information_description}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>Enter_Email_to_register_Section3</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Enter_Email_to_register_Section3_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Address</name>
+                    <fieldText>&lt;p&gt;&lt;strong&gt;{!Contact_us}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Label.Enter_Email_Contact_us_address}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
                     </value>
                 </inputParameters>
                 <isRequired>false</isRequired>
@@ -1223,14 +1258,14 @@
         </inputAssignments>
     </subflows>
     <textTemplates>
+        <name>Contact_us</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;div class=&quot;slds-text-heading_medium&quot;&gt;{!$Label.Enter_Email_Contact_us}&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
         <name>DataInitiativeHeading</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;div class=&quot;slds-text-heading_medium&quot;&gt;{!$Label.Enter_Email_Data_Initiative}&lt;/div&gt;</text>
-    </textTemplates>
-    <textTemplates>
-        <name>DataProcessingHeading</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>&lt;div class=&quot;slds-text-heading_medium&quot;&gt;{!$Label.Enter_Email_Data_processing_heading}&lt;/div&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>DearKontaktHeading</name>
@@ -1246,6 +1281,11 @@
         <name>FindOneHeading</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;div class=&quot;slds-text-heading_small&quot;&gt;{!$Label.Kontakt_Registration_Find_number_One}&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>QAHeading</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;div class=&quot;slds-text-heading_medium&quot;&gt;{!$Label.Enter_Email_QA_heading}&lt;/div&gt;</text>
     </textTemplates>
     <variables>
         <name>ContactId</name>
