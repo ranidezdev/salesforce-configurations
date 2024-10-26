@@ -3,8 +3,8 @@
     <actionCalls>
         <name>NavigateToNewKontaktTrial</name>
         <label>NavigateToNewKontaktTrial</label>
-        <locationX>176</locationX>
-        <locationY>566</locationY>
+        <locationX>182</locationX>
+        <locationY>758</locationY>
         <actionName>c:NavigateToRecord</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -14,14 +14,124 @@
                 <elementReference>NewKontaktTrial.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>c:NavigateToRecord</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>59.0</apiVersion>
     <assignments>
+        <name>Copy_1_of_SetNewKontaktTrial</name>
+        <label>PartiallySetNewKontaktTrial</label>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.FAGExample__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.FAGExample__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.Account__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.CFGExample__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.CFGExample__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.ConfigurationExample__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.ConfigurationExample__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>PartiallyResetNewKontaktTrialFields</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>PartiallyResetNewKontaktTrialFields</name>
+        <label>PartiallyResetNewKontaktTrialFields</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.Id</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.ExpiredTrial__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.Email</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.ValidUntil__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.ValidFrom__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.DateFinalApproval__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.AccountPotential__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.CustomerSegmentation__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.CustomerSegmentation__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewKontaktTrial.TrialNumber__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.TrialNumber__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>InsertNewKontaktTrial</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>ResetNewKontaktTrialFields</name>
         <label>ResetNewKontaktTrialFields</label>
-        <locationX>176</locationX>
-        <locationY>350</locationY>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>NewKontaktTrial.Id</assignToReference>
             <operator>Assign</operator>
@@ -80,8 +190,8 @@
     <assignments>
         <name>SetNewKontaktTrial</name>
         <label>SetNewKontaktTrial</label>
-        <locationX>176</locationX>
-        <locationY>242</locationY>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>NewKontaktTrial</assignToReference>
             <operator>Assign</operator>
@@ -93,6 +203,31 @@
             <targetReference>ResetNewKontaktTrialFields</targetReference>
         </connector>
     </assignments>
+    <decisions>
+        <name>IsTheKontaktTrialsNonExpired</name>
+        <label>Is the Kontakt Trial non expired?</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_SetNewKontaktTrial</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>IsNonExpiredTrial</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.CanStartReTrialTechnicalField__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetNewKontaktTrial</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
         <description>Add 1 day to the Valid Until date as a new value</description>
@@ -120,12 +255,18 @@
             <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
+    <processMetadataValues>
+        <name>OutdatedBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
         <name>InsertNewKontaktTrial</name>
         <label>InsertNewKontaktTrial</label>
-        <locationX>176</locationX>
-        <locationY>458</locationY>
+        <locationX>182</locationX>
+        <locationY>650</locationY>
         <connector>
             <targetReference>NavigateToNewKontaktTrial</targetReference>
         </connector>
@@ -137,11 +278,11 @@
     <recordLookups>
         <name>ParentAccount</name>
         <label>ParentAccount</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>SetNewKontaktTrial</targetReference>
+            <targetReference>IsTheKontaktTrialsNonExpired</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -158,14 +299,14 @@
     <recordRollbacks>
         <name>RollbackAllRecords</name>
         <label>RollbackAllRecords</label>
-        <locationX>440</locationX>
-        <locationY>674</locationY>
+        <locationX>578</locationX>
+        <locationY>866</locationY>
     </recordRollbacks>
     <screens>
         <name>FaultScreen</name>
         <label>FaultScreen</label>
-        <locationX>440</locationX>
-        <locationY>566</locationY>
+        <locationX>578</locationX>
+        <locationY>758</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -182,7 +323,7 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>ParentAccount</targetReference>
