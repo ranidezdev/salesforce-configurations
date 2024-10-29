@@ -54,7 +54,7 @@ def parse_document(file_path, isXML=True):
         print(f"Ein Fehler ist aufgetreten: {e}")
 
 
-file_path = 'Configuration_Example_Queue.queue-meta.xml'
+file_path = 'CustomLabels.labels-meta.xml'
 isXML = False 
 
 parse_document(file_path, isXML)
